@@ -30,3 +30,5 @@ if ($user_id_exists > 0) {
     $response['status'] = "Info added";
 }
 echo json_encode($response);
+$dhh=password_hash('Admin123$', PASSWORD_BCRYPT);
+echo $dhh;
