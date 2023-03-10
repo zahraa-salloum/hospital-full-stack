@@ -115,4 +115,26 @@ $response['AB Negative'] = $blood_type_number;
 
 // ---------------------------------------------------------------------------------------------
 
+$user_gender_female= 'female';
+$check_female_employee = $mysqli->prepare('select * from employees_info where gender = ?');
+$check_female_employee->bind_param('s', $user_gender_female);
+$check_female_employee->execute();
+$check_female_employee->store_result();
+$female_employee_number = $check_female_employee -> num_rows();
+
+$response['female_employees'] = $female_employee_number;
+
+// ---------------------------------------------------------------------------------------------
+
+$user_gender_male= 'male';
+$check_male_employee = $mysqli->prepare('select * from employees_info where gender = ?');
+$check_male_employee->bind_param('s', $user_gender_male);
+$check_male_employee->execute();
+$check_male_employee->store_result();
+$male_employee_number = $check_male_employee -> num_rows();
+
+$response['male_employees'] = $male_employee_number;
+
+// ---------------------------------------------------------------------------------------------
+
 echo json_encode($response);
