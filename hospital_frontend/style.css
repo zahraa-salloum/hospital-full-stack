@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
+body{
+  font-family: "Open Sans";
+}
 html {
   height:100%;
   background-image: url('photos/woman.jpg');
@@ -68,10 +70,12 @@ nav ul li a:hover {
 }
 .size_heading{
   color: #000000;
+  font-family: "Open Sans";
   font-size: 20px;
 }
 .input_clear {
   background-color:rgba(255,255,255,0.13);
+  font-family: "Open Sans";
   font-size: large;
   width: 75%;
   padding: 12px 20px;
@@ -82,6 +86,7 @@ nav ul li a:hover {
 }
 .input_clear:focus {
   outline: none !important;
+  font-family: "Open Sans";
   border: 2px solid #01c3ff;
   box-shadow: 0 1px #c0c5c8;
   color: #000000;
@@ -94,6 +99,7 @@ nav ul li a:hover {
   border-radius: 200px;
   color: #000000;
   background: #01c3ff;
+  font-family: "Open Sans";
   font-size: 16px;
   transition: 200ms;
 }
