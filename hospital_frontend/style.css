@@ -47,3 +47,65 @@ nav ul li a:hover {
   background: rgba(255, 255, 255, 0.1);
   color: rgb(92,76,124);
 }
+
+/* -------------------------------------------------------------------------------------------- */
+
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  max-width: 600px;
+  background-color: rgba(255,255,255,0.13);
+  margin: auto;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  
+}
+.size_heading{
+  color: #000000;
+  font-size: 20px;
+}
+.input_clear {
+  background-color:rgba(255,255,255,0.13);
+  font-size: large;
+  width: 75%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #01c3ff;
+  border-radius: 4px;
+}
+.input_clear:focus {
+  outline: none !important;
+  border: 2px solid #01c3ff;
+  box-shadow: 0 1px #c0c5c8;
+  color: #000000;
+}
+.button {
+  cursor: pointer;
+  width: 75%;
+  border: 1px solid #2C698D;
+  padding: 14px 30px;
+  border-radius: 200px;
+  color: #000000;
+  background: #01c3ff;
+  font-size: 16px;
+  transition: 200ms;
+}
+
+.button:hover {
+      background: rgba(255,255,255,0.13);
+      color: black;
+}
+.login_text{
+  display: inline;
+}
+
+/* -------------------------------------------------------------------------------------------- */
+
+
