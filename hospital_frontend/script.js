@@ -98,7 +98,7 @@ submit.addEventListener("click", async function(){
     validateDob()
     validateEmail();
     validatePassword();
-    console.log(position.value)
+    
 
     const post_users_signup = workshop_pages.base_url + "signup.php";
     
@@ -110,7 +110,10 @@ submit.addEventListener("click", async function(){
     data.append('user_type', position.value);
 
     const response = await workshop_pages.postAPI(post_users_signup,data);
-    console.log(response.data);
+    
+    if(response.data['status'] == 'success'){
+        document.getElementById("successmessage").innerHTML = "Sign up success. Please log in";
+    }
   
 
     
