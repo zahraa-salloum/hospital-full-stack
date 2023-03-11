@@ -13,16 +13,21 @@
     <div class="container">
         <div class="size_heading"><h1>SIGN UP</h1></div>
         <input id="name" type="text" placeholder="Name" class="input_clear"/>
+        <span id='namemessage' class="error"></span>
         <input id="email" type="email" placeholder="Email" class="input_clear"/>
+        <span id='emailmessage' class="error"></span>
         <input id="password" type="password" placeholder="Password" class="input_clear"/>
+        <span id='passwordmessage' class="error"></span>
         <input id="dob" type="date" placeholder="Date of Birth" class="input_clear"/>
+        <span id='dobmessage' class="error"></span>
         <select name="position" id="position" class="input_clear">
             <option value="admin">Admin</option>
             <option value="employee">Employee</option>
             <option value="patient">Patient</option>
         </select>
+        <span></span>
         
-        <button class="button" id="signup">SIGN UP</button>
+        <button class="button" id="submit">SIGN UP</button>
         <div>
           <p class="login_text">Already a User?</p>
           <a href="" class="login_text">Log In</a>
