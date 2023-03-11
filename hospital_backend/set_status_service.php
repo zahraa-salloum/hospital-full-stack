@@ -3,8 +3,8 @@
 header("Access-Control-Allow-Origin: *");
 include('connection.php');
 
-$id = $_POST['id'];
-$status = $_POST['status'];
+$id = $_GET['id'];
+$status = $_GET['status'];
 
 $response['status'] = "Something went wrong";
 

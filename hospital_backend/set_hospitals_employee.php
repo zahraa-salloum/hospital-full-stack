@@ -3,9 +3,9 @@
 header("Access-Control-Allow-Origin: *");
 include('connection.php');
 
-$employee_id = $_POST['employee_id'];
-$hospital_id = $_POST['hospital_id'];
-$date_joined = $_POST['date_joined'];
+$employee_id = $_GET['employee_id'];
+$hospital_id = $_GET['hospital_id'];
+$date_joined = $_GET['date_joined'];
 
 $response['status'] = "Something went wrong";
 

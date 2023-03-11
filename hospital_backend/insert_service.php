@@ -3,11 +3,11 @@
 header("Access-Control-Allow-Origin: *");
 include('connection.php');
 
-$description = $_POST['description'];
-$cost = $_POST['cost'];
-$patient_id = $_POST['patient_id'];
-$employee_id = $_POST['employee_id'];
-$department_id = $_POST['department_id'];
+$description = $_GET['description'];
+$cost = $_GET['cost'];
+$patient_id = $_GET['patient_id'];
+$employee_id = $_GET['employee_id'];
+$department_id = $_GET['department_id'];
 
 
 $response['status'] = "Something went wrong";

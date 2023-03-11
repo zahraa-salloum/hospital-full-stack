@@ -3,11 +3,11 @@
 header("Access-Control-Allow-Origin: *");
 include('connection.php');
 
-$room_id = $_POST['room_id'];
-$bed_id = $_POST['bed_id'];
-$user_id = $_POST['user_id'];
-$datetime_entered = $_POST['datetime_entered'];
-$datetime_left = $_POST['datetime_left'];
+$room_id = $_GET['room_id'];
+$bed_id = $_GET['bed_id'];
+$user_id = $_GET['user_id'];
+$datetime_entered = $_GET['datetime_entered'];
+$datetime_left = $_GET['datetime_left'];
 
 
 $response['status'] = "Something went wrong";

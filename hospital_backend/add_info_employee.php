@@ -3,10 +3,10 @@
 header("Access-Control-Allow-Origin: *");
 include('connection.php');
 
-$SSN = $_POST['SSN'];
-$position  = $_POST['position'];
-$gender = $_POST['gender'];
-$user_id = $_POST['user_id'];
+$SSN = $_GET['SSN'];
+$position  = $_GET['position'];
+$gender = $_GET['gender'];
+$user_id = $_GET['user_id'];
 
 $response['status'] = "Something went wrong";
 

@@ -3,10 +3,10 @@
 header("Access-Control-Allow-Origin: *");
 include('connection.php');
 
-$blood_type = $_POST['blood_type'];
-$EHR  = $_POST['EHR'];
-$gender = $_POST['gender'];
-$user_id = $_POST['user_id'];
+$blood_type = $_GET['blood_type'];
+$EHR  = $_GET['EHR'];
+$gender = $_GET['gender'];
+$user_id = $_GET['user_id'];
 
 $response['status'] = "Something went wrong";
 

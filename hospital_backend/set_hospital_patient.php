@@ -3,8 +3,8 @@
 header("Access-Control-Allow-Origin: *");
 include('connection.php');
 
-$user_id = $_POST['user_id'];
-$hospital_id = $_POST['hospital_id'];
+$user_id = $_GET['user_id'];
+$hospital_id = $_GET['hospital_id'];
 
 $response['status'] = "Something went wrong";
 
