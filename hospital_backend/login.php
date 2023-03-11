@@ -8,13 +8,13 @@ require_once 'vendor/autoload.php';
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$query = $mysqli->prepare('select name,email,password,dob,usertype_id from users where email=?');
+$query = $mysqli->prepare('select id,name,email,password,dob,usertype_id from users where email=?');
 $query->bind_param('s', $email);
 $query->execute();
 
 $query->store_result();
 $num_rows = $query->num_rows();
-$query->bind_result($name, $email,$hashed_password,$dob,$usertype_id);
+$query->bind_result($id,$name, $email,$hashed_password,$dob,$usertype_id);
 $query->fetch();
 $response = [];
 if ($num_rows == 0) {
@@ -23,6 +23,7 @@ if ($num_rows == 0) {
 } else {
     if (password_verify($password, $hashed_password)) {
         $response['response'] = "logged in";
+        $response['id'] = $id;
         $response['name'] = $name;
         $response['email'] = $email;
         $response['dob'] = $dob;
@@ -64,7 +65,8 @@ if ($response['response'] == "logged in") {
             "name" =>$response['name'],
             "email" =>$response['email'],
             "dob" =>$response['dob'],
-            "usertype_id" =>$response['usertype_id']
+            "usertype_id" =>$response['usertype_id'],
+            "id" =>$response['id']
         )
     );
 } else {
