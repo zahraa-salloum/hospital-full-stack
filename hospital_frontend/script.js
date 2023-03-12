@@ -439,4 +439,8 @@ workshop_pages.load_editinfopatient = async () => {
 
 }
 
+workshop_pages.load_medication = async () => {
+}
+
+
 
