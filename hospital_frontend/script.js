@@ -526,10 +526,14 @@ workshop_pages.load_beds = async () => {
     const submit = document.getElementById('submit');
     const user_id = window.localStorage.getItem('user_id');
 
+// -----------------Getting Hospital----------------------------
+
     const get_hospital = workshop_pages.base_url + "select_hospital_patient.php";
     const response = await workshop_pages.getAPI(get_hospital+'?id=' + user_id);
 
     const hospital_id = response.data['hospital_id'];
+
+// -----------------Getting Departments----------------------------
 
     const get_departments = workshop_pages.base_url + "select_departments.php";
     const response_departments = await workshop_pages.getAPI(get_departments+'?hospital_id=' + hospital_id);
@@ -537,6 +541,25 @@ workshop_pages.load_beds = async () => {
         let newOption = new Option(response_departments.data[i]['name'],response_departments.data[i]['id']);
         department.add(newOption,undefined);
         }
+// -----------------Getting Rooms----------------------------
+    let department_value = department.value;
+    const get_rooms = workshop_pages.base_url + "select_rooms.php";
+    const response_rooms = await workshop_pages.getAPI(get_rooms+'?department_id=' + department_value);
+    
+    for( let i = 0; i < response_rooms.data.length; i++){
+        let newOption = new Option(response_rooms.data[i]['room_number'],response_rooms.data[i]['id']);
+        room.add(newOption,undefined);
 
+        }
+        
+// -----------------Getting Beds----------------------------
+let room_value = room.value;
+    const get_beds = workshop_pages.base_url + "select_beds.php";
+    const response_beds = await workshop_pages.getAPI(get_beds+'?department_id=' +department_value+'&hospital_id='+hospital_id+'&room_id='+room_value);
+    
+    for( let i = 0; i < response_beds.data.length; i++){
+        let newOption = new Option(response_beds.data[i]['id'],response_beds.data[i]['id']);
+        bed.add(newOption,undefined);
+}
 
 }
