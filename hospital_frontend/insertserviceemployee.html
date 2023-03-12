@@ -9,7 +9,18 @@
 </head>
 <body>
     
-
+    <div class="container">
+        <div class="size_heading"><h1>Add Service</h1></div>
+        <input id="description" type="text" placeholder="Description" class="input_clear"/>
+        <input id="cost" type="text" placeholder="Cost" class="input_clear"/>
+        <input id="department_id" type="text" placeholder="Department Id" class="input_clear"/>
+        <select name="patient" id="patient" class="input_clear">
+        </select>
+        <select name="status" id="status" class="input_clear">
+            <option value="Approved">Approved</option>
+        </select>
+        <button class="button" id="submit">CONFIRM</button>
+    </div>
 
     <script src="axios.min.js"></script>
     <script src="script.js"></script>
