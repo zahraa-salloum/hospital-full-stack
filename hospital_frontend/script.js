@@ -143,3 +143,37 @@ workshop_pages.load_login = async () => {
         }
     }
 }
+
+workshop_pages.load_statistics = async () => {
+    const container = document.getElementById('container');
+    const get_statistics = workshop_pages.base_url + "statistics_fixed.php";
+    const response = await workshop_pages.getAPI(get_statistics);
+    
+
+    document.getElementById('bldgrpAP').innerText = response.data['A Positive'];
+    document.getElementById('bldgrpBP').innerText = response.data['B Positive'];
+    document.getElementById('bldgrpOP').innerText = response.data['O Positive'];
+    document.getElementById('bldgrpABP').innerText = response.data['AB Positive'];
+    document.getElementById('bldgrpAN').innerText = response.data['A Negative'];
+    document.getElementById('bldgrpBN').innerText = response.data['B Negative'];
+    document.getElementById('bldgrpON').innerText = response.data['O Negative'];
+    document.getElementById('bldgrpABN').innerText = response.data['AB Negative'];
+    document.getElementById('patientsMale').innerText = response.data['male_patients'];
+    document.getElementById('patientsFemale').innerText = response.data['female_patients'];
+    document.getElementById('employeesMale').innerText = response.data['male_employees'];
+    document.getElementById('employeesFemale').innerText = response.data['female_employees'];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

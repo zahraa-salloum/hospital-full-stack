@@ -126,4 +126,8 @@ nav ul li a:hover {
 }
 /* -------------------------------------------------------------------------------------------- */
 
-
+.statistics{
+  font-weight: bold;
+  margin: 20px auto;
+  background-color:rgba(86, 68, 68, 0.13);
+}
