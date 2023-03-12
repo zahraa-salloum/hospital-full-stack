@@ -299,6 +299,28 @@ submit.addEventListener("click", async function(){
 }
 
 workshop_pages.load_services = async () => {
+    const service = document.getElementById('service');
+    const status = document.getElementById('status');
+    const submit = document.getElementById('submit');
+
+    // ----------------------------------Adding Services--------------------------------------------------------
+    const get_services = workshop_pages.base_url + "select_services_null.php";
+    const response_services = await workshop_pages.getAPI(get_services);
+    let services_array = [];
+    
+    for( let i = 0; i < response_services.data.length; i++){
+        const get_patient = workshop_pages.base_url + "select_patient.php";
+        const response_patient = await workshop_pages.getAPI(get_patient+'?id='+response_services.data[i]['patient_id']);
+        let one_service = {
+            "service_id": response_services.data[i]['id'],
+            "patient_id": response_services.data[i]['patient_id'],
+            "service_description": response_services.data[i]['description'],
+            "patient_name": response_patient.data['name']
+          };
+        services_array.push(one_service);
+        let newOption = new Option(response_services.data[i]['description']+" for "+response_patient.data['name'],response_services.data[i]['id']);
+        service.add(newOption,undefined);
+    }
 }
 
 
