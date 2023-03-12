@@ -216,3 +216,26 @@ submit.addEventListener("click", async function(){
 })
 
 }
+
+workshop_pages.load_assignemployees = async () => {
+    const container = document.getElementById('container');
+    const hospital = document.getElementById('hospital');
+    const employee = document.getElementById('employee');
+    const submit = document.getElementById('submit');
+// ----------------------------------Adding hospitals--------------------------------------------------------
+    const get_hospitals = workshop_pages.base_url + "select_hospitals.php";
+    const response_hospitals = await workshop_pages.getAPI(get_hospitals);
+    let hospitals_array = [];
+    
+    for( let i = 0; i < response_hospitals.data.length; i++){
+        let one_hospital = {
+            "hospital_id": response_hospitals.data[i]['id'],
+            "hospital_name": response_hospitals.data[i]['name']
+          };
+        hospitals_array.push(one_hospital);
+        let newOption = new Option(response_hospitals.data[i]['name'],response_hospitals.data[i]['id']);
+        hospital.add(newOption,undefined);
+    }
+}
+
+
