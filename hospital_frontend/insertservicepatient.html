@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Service</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="size_heading"><h1>Add Service</h1></div>
+        <input id="description" type="text" placeholder="Description" class="input_clear"/>
+        <input id="cost" type="text" placeholder="Cost" class="input_clear"/>
+        <input id="department_id" type="text" placeholder="Department Id" class="input_clear"/>
+        <select name="employee" id="employee" class="input_clear">
+        
+        <button class="button" id="submit">CONFIRM</button>
+    </div>
+
+    <script src="axios.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      workshop_pages.loadFor("insertservicepatient");
+    </script> 
+</body>
+</html>

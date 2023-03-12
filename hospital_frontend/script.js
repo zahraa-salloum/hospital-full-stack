@@ -477,4 +477,8 @@ workshop_pages.load_medication = async () => {
 
 }
 
+workshop_pages.load_insertservicepatient = async () => {
+
+
+}
 
