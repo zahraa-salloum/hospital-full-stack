@@ -369,6 +369,14 @@ workshop_pages.load_editinfoemployee = async () => {
 }
 
 workshop_pages.load_insertserviceemployee = async () => {
+    const description = document.getElementById('description'); 
+    const cost = document.getElementById('cost');
+    const department_id = document.getElementById('department_id');
+    const patient = document.getElementById('patient');
+    const status = document.getElementById('status');
+    const submit = document.getElementById('submit');
+    
+    const user_id = window.localStorage.getItem('user_id');
 }
 
 
