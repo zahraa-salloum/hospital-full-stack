@@ -321,6 +321,17 @@ workshop_pages.load_services = async () => {
         let newOption = new Option(response_services.data[i]['description']+" for "+response_patient.data['name'],response_services.data[i]['id']);
         service.add(newOption,undefined);
     }
+// --------------------------------------Confirm---------------------------------------------------
+submit.addEventListener("click", async function(){
+    let service_id = service.value;
+    let status_value = status.value;
+    
+    const set_service_status = workshop_pages.base_url + "set_status_service.php";
+    const response_service_status = await workshop_pages.getAPI(set_service_status+'?id='+service_id+'&status='+status_value);
+    if(response_service_status.data['status']=="Status set"){
+    location.reload();
+}
+})
 }
 
 
