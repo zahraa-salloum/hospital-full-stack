@@ -591,3 +591,6 @@ submit.addEventListener("click", async function(){
 
 
 }
+
+workshop_pages.load_invoice = async () => {
+}
