@@ -207,12 +207,12 @@ workshop_pages.load_assignpatients = async () => {
 submit.addEventListener("click", async function(){
     let hospital_id = hospital.value;
     let patient_id = patient.value;
-    console.log(hospital_id);
-    console.log(patient_id);
+    
     const set_patient_hospital = workshop_pages.base_url + "set_hospital_patient.php";
     const response_patient_hospital = await workshop_pages.getAPI(set_patient_hospital+'?user_id='+patient_id+'&hospital_id='+hospital_id);
-    
+    if(response_patient_hospital.data['status']=="Hospital set"){
     location.reload();
+}
 })
 
 }
