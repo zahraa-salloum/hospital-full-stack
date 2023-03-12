@@ -519,3 +519,5 @@ workshop_pages.load_insertservicepatient = async () => {
 
 }
 
+workshop_pages.load_beds = async () => {
+}
