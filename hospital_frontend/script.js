@@ -478,7 +478,44 @@ workshop_pages.load_medication = async () => {
 }
 
 workshop_pages.load_insertservicepatient = async () => {
+    const description = document.getElementById('description'); 
+    const cost = document.getElementById('cost');
+    const department_id = document.getElementById('department_id');
+    const employee = document.getElementById('employee');
+    const submit = document.getElementById('submit');
+    
+    const user_id = window.localStorage.getItem('user_id');
 
+    // ----------------------------------Adding Employees--------------------------------------------------------
+    const get_employees = workshop_pages.base_url + "select_employees.php";
+    const response_employees = await workshop_pages.getAPI(get_employees);
+    let employees_array = [];
+
+    for( let i = 0; i < response_employees.data.length; i++){
+        let one_employee = {
+            "employee_id": response_employees.data[i]['id'],
+            "employee_name": response_employees.data[i]['name']
+        };
+        employees_array.push(one_employee);
+        let newOption = new Option(response_employees.data[i]['name'],response_employees.data[i]['id']);
+        employee.add(newOption,undefined);
+}
+
+// --------------------------------Confirm---------------------------------------------------
+    submit.addEventListener("click", async function(){
+        let description_value = description.value;
+        let cost_value = cost.value;
+        let department_id_value = department_id.value;
+        let employee_value = employee.value;
+        
+
+        const get_service = workshop_pages.base_url + "insert_service.php";
+        const response_service = await workshop_pages.getAPI(get_service+'?description='+description_value+'&cost='+cost_value+'&patient_id='+user_id+'&employee_id='+employee_value+'&department_id='+department_id_value);
+        if(response_service.data['status'] == "success"){
+        location.reload();
+    }
+
+})
 
 }
 
