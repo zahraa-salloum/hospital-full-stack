@@ -211,7 +211,8 @@ submit.addEventListener("click", async function(){
     console.log(patient_id);
     const set_patient_hospital = workshop_pages.base_url + "set_hospital_patient.php";
     const response_patient_hospital = await workshop_pages.getAPI(set_patient_hospital+'?user_id='+patient_id+'&hospital_id='+hospital_id);
-    console.log(response_patient_hospital.data);
+    
+    location.reload();
 })
 
 }
