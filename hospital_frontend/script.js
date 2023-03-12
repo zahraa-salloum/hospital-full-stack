@@ -163,17 +163,7 @@ workshop_pages.load_statistics = async () => {
     document.getElementById('employeesMale').innerText = response.data['male_employees'];
     document.getElementById('employeesFemale').innerText = response.data['female_employees'];
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+workshop_pages.load_assignpatients = async () => {
 }
