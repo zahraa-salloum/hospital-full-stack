@@ -252,6 +252,17 @@ workshop_pages.load_assignemployees = async () => {
         employee.add(newOption,undefined);
     }
 // --------------------------------Confirm--------------------------------------------------------
+submit.addEventListener("click", async function(){
+    let hospital_id = hospital.value;
+    let employee_id = employee.value;
+    let date_joined = dob.value;
+    
+    const set_employee_hospital = workshop_pages.base_url + "set_hospitals_employee.php";
+    const response_employee_hospital = await workshop_pages.getAPI(set_employee_hospital+'?employee_id='+employee_id+'&hospital_id='+hospital_id+'&date_joined='+date_joined);
+    if(response_employee_hospital.data['status']=="Hospital-Employee set"){
+    location.reload();
+}
+})
 
 }
 
