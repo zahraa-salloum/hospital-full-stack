@@ -440,7 +440,29 @@ workshop_pages.load_editinfopatient = async () => {
 }
 
 workshop_pages.load_medication = async () => {
-}
+    const medication = document.getElementById('medication'); 
+    const quantity = document.getElementById('quantity');
+    const submit = document.getElementById('submit');
 
+    const user_id = window.localStorage.getItem('user_id');
+
+    // ----------------------------------Adding Medicines--------------------------------------------------------
+    const get_medicines = workshop_pages.base_url + "select_medicines.php";
+    const response_medicines = await workshop_pages.getAPI(get_medicines);
+    let medicines_array = [];
+    
+    for( let i = 0; i < response_medicines.data.length; i++){
+        let one_medicine = {
+            "medicine_id": response_medicines.data[i]['id'],
+            "medicine_name": response_medicines.data[i]['name'],
+            "medicine_cost": response_medicines.data[i]['cost']
+          };
+        medicines_array.push(one_medicine);
+        let newOption = new Option(response_medicines.data[i]['name'] + " "+response_medicines.data[i]['cost']+ " $",response_medicines.data[i]['id']);
+        medication.add(newOption,undefined);
+
+
+}
+}
 
 
