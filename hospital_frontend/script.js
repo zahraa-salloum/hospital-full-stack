@@ -338,5 +338,14 @@ submit.addEventListener("click", async function(){
 })
 }
 
+workshop_pages.load_out = async () => {
+    let out = document.getElementById('out');
+    out.addEventListener("click", function(){
+        localStorage.clear();
+        location.replace("main.html")
+    })
+}
+
+
 
 
