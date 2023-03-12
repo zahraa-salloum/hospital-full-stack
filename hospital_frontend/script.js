@@ -143,6 +143,9 @@ workshop_pages.load_login = async () => {
         if(window.localStorage.getItem('usertype_id') == 1){
             location.replace("adminpage.html")
         }
+        if(window.localStorage.getItem('usertype_id') == 2){
+            location.replace("employeepage.html")
+        }
 
         }
     }
@@ -347,6 +350,22 @@ workshop_pages.load_out = async () => {
 }
 
 workshop_pages.load_editinfoemployee = async () => {
+    const SSN = document.getElementById('SSN'); 
+    const position = document.getElementById('position');
+    const gender = document.getElementById('gender');
+    const submit = document.getElementById('submit');
+    const user_id = window.localStorage.getItem('user_id');
+
+    submit.addEventListener("click", async function(){
+        SSN_value = SSN.value;
+        position_value = position.value;
+        gender_value = gender.value; 
+
+        const get_employee = workshop_pages.base_url + "add_info_employee.php";
+        const response_employee = await workshop_pages.getAPI(get_employee+'?SSN='+SSN_value+'&position='+position_value+'&gender='+gender_value+'&user_id='+user_id);
+        
+    })
+    
 }
 
 
