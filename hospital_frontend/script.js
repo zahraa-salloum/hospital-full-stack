@@ -368,6 +368,11 @@ workshop_pages.load_editinfoemployee = async () => {
     
 }
 
+workshop_pages.load_insertserviceemployee = async () => {
+}
+
+
+
 
 
 
