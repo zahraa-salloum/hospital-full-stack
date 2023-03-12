@@ -525,6 +525,8 @@ workshop_pages.load_beds = async () => {
     const bed = document.getElementById('bed');
     const submit = document.getElementById('submit');
     const user_id = window.localStorage.getItem('user_id');
+    const date_entered = document.getElementById('date_entered');
+    const date_left = document.getElementById('date_left');
 
 // -----------------Getting Hospital----------------------------
 
@@ -561,5 +563,31 @@ let room_value = room.value;
         let newOption = new Option(response_beds.data[i]['id'],response_beds.data[i]['id']);
         bed.add(newOption,undefined);
 }
+// -----------------Confirm-----------------------------
+
+submit.addEventListener("click", async function(){
+    room_value = room.value;
+    department_value = department.value;
+    let bed_value = bed.value;
+    let date_entered_value = date_entered.value;
+    let date_left_value = date_left.value;
+
+    const get_user_department = workshop_pages.base_url + "insert_user_department.php";
+    const response_user_department = await workshop_pages.getAPI(get_user_department+'?department_id='+department_value+'&user_id='+user_id+'&hospital_id='+hospital_id);
+
+    const get_change_bed = workshop_pages.base_url + "change_bed.php";
+    const response_change_bed = await workshop_pages.getAPI(get_change_bed+'?bed_id='+bed_value+'&taken= 1');
+
+    const get_user_room = workshop_pages.base_url + "insert_user_room.php";
+    const response_user_room = await workshop_pages.getAPI(get_user_room+'?bed_id='+bed_value+'&user_id= '+user_id+'&room_id='+room_value+'&datetime_entered='+date_entered_value+'&datetime_left='+date_left_value);
+    if(response_user_room.data['status'] == "success"){
+    location.reload();
+    
+}
+
+
+})
+
+
 
 }
