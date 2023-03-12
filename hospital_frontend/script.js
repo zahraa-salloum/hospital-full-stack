@@ -346,6 +346,10 @@ workshop_pages.load_out = async () => {
     })
 }
 
+workshop_pages.load_editinfoemployee = async () => {
+}
+
+
 
 
 
