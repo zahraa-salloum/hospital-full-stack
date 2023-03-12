@@ -415,3 +415,7 @@ for( let i = 0; i < response_patients.data.length; i++){
 
 }
 
+workshop_pages.load_editinfopatient = async () => {
+}
+
+
