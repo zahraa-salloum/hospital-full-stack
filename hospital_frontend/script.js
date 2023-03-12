@@ -140,6 +140,10 @@ workshop_pages.load_login = async () => {
             window.localStorage.setItem('user_id', response.data['id']);
             window.localStorage.setItem('usertype_id', response.data['usertype_id']);
 
+        if(window.localStorage.getItem('usertype_id') == 1){
+            location.replace("adminpage.html")
+        }
+
         }
     }
 }
