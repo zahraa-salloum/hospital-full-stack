@@ -10,7 +10,7 @@ $response['status'] = "Something went wrong";
 
 
 $query = $mysqli->prepare('select * from invoices where id =?');
-$query->bind_param('s', $id);
+$query->bind_param('i', $id);
 $query->execute();
 
 $query->store_result();
