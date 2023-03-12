@@ -416,6 +416,27 @@ for( let i = 0; i < response_patients.data.length; i++){
 }
 
 workshop_pages.load_editinfopatient = async () => {
+    const EHR = document.getElementById('EHR'); 
+    const gender = document.getElementById('gender');
+    const blood_type = document.getElementById('blood_type');
+    const submit = document.getElementById('submit');
+
+    const user_id = window.localStorage.getItem('user_id');
+
+    submit.addEventListener("click", async function(){
+        let EHR_value = EHR.value;
+        let gender_value = gender.value;
+        let blood_type_value = blood_type.value; 
+
+        const get_patient = workshop_pages.base_url + "add_info_patient.php";
+        const response_patient = await workshop_pages.getAPI(get_patient+'?EHR='+EHR_value+'&gender='+gender_value+'&blood_type='+blood_type_value+'&user_id='+user_id);
+        if(response_patient.data['status'] == "Info added"){
+            location.reload();
+            
+        }
+        
+    })
+
 }
 
 
