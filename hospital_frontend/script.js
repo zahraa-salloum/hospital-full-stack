@@ -531,4 +531,12 @@ workshop_pages.load_beds = async () => {
 
     const hospital_id = response.data['hospital_id'];
 
+    const get_departments = workshop_pages.base_url + "select_departments.php";
+    const response_departments = await workshop_pages.getAPI(get_departments+'?hospital_id=' + hospital_id);
+    for( let i = 0; i < response_departments.data.length; i++){
+        let newOption = new Option(response_departments.data[i]['name'],response_departments.data[i]['id']);
+        department.add(newOption,undefined);
+        }
+
+
 }
