@@ -170,7 +170,7 @@ workshop_pages.load_assignpatients = async () => {
     const hospital = document.getElementById('hospital');
     const patient = document.getElementById('patient');
     const submit = document.getElementById('submit');
-// ------------------------------------------------------------------------------------------
+// ----------------------------------Adding hospitals--------------------------------------------------------
     const get_hospitals = workshop_pages.base_url + "select_hospitals.php";
     const response_hospitals = await workshop_pages.getAPI(get_hospitals);
     let hospitals_array = [];
@@ -184,7 +184,7 @@ workshop_pages.load_assignpatients = async () => {
         let newOption = new Option(response_hospitals.data[i]['name'],response_hospitals.data[i]['id']);
         hospital.add(newOption,undefined);
     }
-// ------------------------------------------------------------------------------------------
+// ----------------------------------Adding patients--------------------------------------------------------
     const get_patients_hospital_null = workshop_pages.base_url + "select_patients_null_hospitals.php";
     const response_patients_hospital_null = await workshop_pages.getAPI(get_patients_hospital_null);
     let patients_array = [];
@@ -203,6 +203,15 @@ workshop_pages.load_assignpatients = async () => {
         patient.add(newOption,undefined);
         
     }
-    console.log(patients_array);
+// ---------------------------------------Confirm---------------------------------------------------
+submit.addEventListener("click", async function(){
+    let hospital_id = hospital.value;
+    let patient_id = patient.value;
+    console.log(hospital_id);
+    console.log(patient_id);
+    const set_patient_hospital = workshop_pages.base_url + "set_hospital_patient.php";
+    const response_patient_hospital = await workshop_pages.getAPI(set_patient_hospital+'?user_id='+patient_id+'&hospital_id='+hospital_id);
+    console.log(response_patient_hospital.data);
+})
 
 }
