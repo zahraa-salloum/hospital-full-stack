@@ -222,7 +222,7 @@ workshop_pages.load_assignemployees = async () => {
     const hospital = document.getElementById('hospital');
     const employee = document.getElementById('employee');
     const submit = document.getElementById('submit');
-// ----------------------------------Adding hospitals--------------------------------------------------------
+// ----------------------------------Adding Hospitals--------------------------------------------------------
     const get_hospitals = workshop_pages.base_url + "select_hospitals.php";
     const response_hospitals = await workshop_pages.getAPI(get_hospitals);
     let hospitals_array = [];
@@ -235,6 +235,20 @@ workshop_pages.load_assignemployees = async () => {
         hospitals_array.push(one_hospital);
         let newOption = new Option(response_hospitals.data[i]['name'],response_hospitals.data[i]['id']);
         hospital.add(newOption,undefined);
+    }
+    // ----------------------------------Adding Employees--------------------------------------------------------
+    const get_employees = workshop_pages.base_url + "select_employees.php";
+    const response_employees = await workshop_pages.getAPI(get_employees);
+    let employees_array = [];
+    
+    for( let i = 0; i < response_employees.data.length; i++){
+        let one_employee = {
+            "employee_id": response_employees.data[i]['id'],
+            "employee_name": response_employees.data[i]['name']
+          };
+        employees_array.push(one_employee);
+        let newOption = new Option(response_employees.data[i]['name'],response_employees.data[i]['id']);
+        employee.add(newOption,undefined);
     }
 }
 
