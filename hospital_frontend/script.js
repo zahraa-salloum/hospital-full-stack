@@ -357,9 +357,9 @@ workshop_pages.load_editinfoemployee = async () => {
     const user_id = window.localStorage.getItem('user_id');
 
     submit.addEventListener("click", async function(){
-        SSN_value = SSN.value;
-        position_value = position.value;
-        gender_value = gender.value; 
+        let SSN_value = SSN.value;
+        let position_value = position.value;
+        let gender_value = gender.value; 
 
         const get_employee = workshop_pages.base_url + "add_info_employee.php";
         const response_employee = await workshop_pages.getAPI(get_employee+'?SSN='+SSN_value+'&position='+position_value+'&gender='+gender_value+'&user_id='+user_id);
@@ -377,11 +377,37 @@ workshop_pages.load_insertserviceemployee = async () => {
     const submit = document.getElementById('submit');
     
     const user_id = window.localStorage.getItem('user_id');
+// ----------------------------------Adding Patients--------------------------------------------------------
+const get_patients = workshop_pages.base_url + "select_patients.php";
+const response_patients = await workshop_pages.getAPI(get_patients);
+let patients_array = [];
+
+for( let i = 0; i < response_patients.data.length; i++){
+    let one_patient = {
+        "patient_id": response_patients.data[i]['id'],
+        "patient_name": response_patients.data[i]['name']
+      };
+    patients_array.push(one_patient);
+    let newOption = new Option(response_patients.data[i]['name'],response_patients.data[i]['id']);
+    patient.add(newOption,undefined);
 }
 
+// --------------------------------Confirm---------------------------------------------------
+    submit.addEventListener("click", async function(){
+        let description_value = description.value;
+        let cost_value = cost.value;
+        let department_id_value = department_id.value;
+        let patient_value = patient.value;
+        let status_value = status.value;
+
+        const get_service = workshop_pages.base_url + "insert_service_employee.php";
+        const response_service = await workshop_pages.getAPI(get_service+'?description='+description_value+'&cost='+cost_value+'&patient_id='+patient_value+'&employee_id='+user_id+'&department_id='+department_id_value+'&status='+status_value);
+        if(response_service.data['status'] == "success"){
+            location.reload();
+        }
+
+    })
 
 
 
-
-
-
+}

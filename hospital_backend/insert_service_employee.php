@@ -15,7 +15,7 @@ $response['status'] = "Something went wrong";
 
 if($employee_id != null){
     $query = $mysqli->prepare('insert into services (description, cost, patient_id,employee_id,department_id,status) values (?, ?, ?,?,?,?)');
-    $query->bind_param('ssiii', $description, $cost, $patient_id,$employee_id,$department_id,$status);
+    $query->bind_param('ssiiis', $description, $cost, $patient_id,$employee_id,$department_id,$status);
     $query->execute();
     $response['status'] = "success";
 }
