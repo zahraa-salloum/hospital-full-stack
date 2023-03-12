@@ -461,8 +461,20 @@ workshop_pages.load_medication = async () => {
         let newOption = new Option(response_medicines.data[i]['name'] + " "+response_medicines.data[i]['cost']+ " $",response_medicines.data[i]['id']);
         medication.add(newOption,undefined);
 
-
 }
+    submit.addEventListener("click", async function(){
+        let medication_value = medication.value;
+        let quantity_value = quantity.value;
+
+        const get_medicine = workshop_pages.base_url + "insert_medication.php";
+        const response_medicine = await workshop_pages.getAPI(get_medicine+'?medication_id='+medication_value+'&user_id='+user_id+'&quantity='+quantity_value);
+        if(response_medicine.data['status'] == "success"){
+        location.reload();
+        
+    }
+    
+})
+
 }
 
 
