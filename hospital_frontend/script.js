@@ -520,4 +520,15 @@ workshop_pages.load_insertservicepatient = async () => {
 }
 
 workshop_pages.load_beds = async () => {
+    const department = document.getElementById('department');
+    const room = document.getElementById('room');
+    const bed = document.getElementById('bed');
+    const submit = document.getElementById('submit');
+    const user_id = window.localStorage.getItem('user_id');
+
+    const get_hospital = workshop_pages.base_url + "select_hospital_patient.php";
+    const response = await workshop_pages.getAPI(get_hospital+'?id=' + user_id);
+
+    const hospital_id = response.data['hospital_id'];
+
 }
