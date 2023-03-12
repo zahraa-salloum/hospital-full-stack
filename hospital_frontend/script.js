@@ -146,6 +146,9 @@ workshop_pages.load_login = async () => {
         if(window.localStorage.getItem('usertype_id') == 2){
             location.replace("employeepage.html")
         }
+        if(window.localStorage.getItem('usertype_id') == 3){
+            location.replace("patientpage.html")
+        }
 
         }
     }
@@ -411,3 +414,4 @@ for( let i = 0; i < response_patients.data.length; i++){
 
 
 }
+
