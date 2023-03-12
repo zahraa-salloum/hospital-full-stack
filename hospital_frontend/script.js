@@ -266,6 +266,37 @@ submit.addEventListener("click", async function(){
 
 }
 
+workshop_pages.load_statisticspatients = async () => {
+    const hospital = document.getElementById('hospital');
+    const total = document.getElementById('total');
+    const submit = document.getElementById('submit');
+
+    // ----------------------------------Adding Hospitals--------------------------------------------------------
+    const get_hospitals = workshop_pages.base_url + "select_hospitals.php";
+    const response_hospitals = await workshop_pages.getAPI(get_hospitals);
+    let hospitals_array = [];
+    
+    for( let i = 0; i < response_hospitals.data.length; i++){
+        let one_hospital = {
+            "hospital_id": response_hospitals.data[i]['id'],
+            "hospital_name": response_hospitals.data[i]['name']
+          };
+        hospitals_array.push(one_hospital);
+        let newOption = new Option(response_hospitals.data[i]['name'],response_hospitals.data[i]['id']);
+        hospital.add(newOption,undefined);
+    }
+// --------------------------------Confirm--------------------------------------------------------
+submit.addEventListener("click", async function(){
+    let hospital_id = hospital.value;
+    
+    
+    const get_count = workshop_pages.base_url + "statistics_patients_hospitals.php";
+    const response = await workshop_pages.getAPI(get_count+'?hospital_id='+hospital_id);
+
+    total.innerText = response.data['Patients'];
+    
+})
+}
 
 
 
