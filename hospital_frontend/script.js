@@ -1,3 +1,4 @@
+
 const workshop_pages = {};
 
 workshop_pages.base_url = "http://localhost/hospital-full-stack/hospital_backend/";
@@ -596,6 +597,8 @@ workshop_pages.load_invoice = async () => {
     const total = document.getElementById('total');
     const submit = document.getElementById('submit');
     const submit_invoice = document.getElementById('submit_invoice');
+
+    
     let total_calculated = 0;
 
     const user_id = window.localStorage.getItem('user_id');
@@ -621,5 +624,8 @@ submit_invoice.addEventListener("click", async function(){
     const response_invoice = await workshop_pages.getAPI(get_invoive+'?user_id=' + user_id+'&hospital_id='+hospital_id+'&total_amount='+total_calculated+'&date_issued='+date);
     
 })
+
+
+
     
 }
