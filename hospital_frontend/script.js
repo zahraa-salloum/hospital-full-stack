@@ -619,7 +619,7 @@ submit_invoice.addEventListener("click", async function(){
     
     const get_invoive = workshop_pages.base_url + "insert_invoice.php";
     const response_invoice = await workshop_pages.getAPI(get_invoive+'?user_id=' + user_id+'&hospital_id='+hospital_id+'&total_amount='+total_calculated+'&date_issued='+date);
-    console.log(response_invoice.data)
+    
 })
     
 }
