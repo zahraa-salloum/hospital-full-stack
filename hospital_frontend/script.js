@@ -593,4 +593,19 @@ submit.addEventListener("click", async function(){
 }
 
 workshop_pages.load_invoice = async () => {
+    const total = document.getElementById('total');
+    const submit = document.getElementById('submit');
+    let total_calculated = 0;
+
+    const user_id = window.localStorage.getItem('user_id');
+
+    submit.addEventListener("click", async function(){
+
+    const get_service = workshop_pages.base_url + "select_services_approved.php";
+    const response = await workshop_pages.getAPI(get_service+'?id=' + user_id);
+    for( let i = 0; i < response.data.length; i++){
+        total_calculated += Number(response.data[i]['cost']);
+    }
+    total.innerHTML = total_calculated + " $"
+    })
 }
