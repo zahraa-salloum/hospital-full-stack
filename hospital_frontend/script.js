@@ -595,6 +595,7 @@ submit.addEventListener("click", async function(){
 workshop_pages.load_invoice = async () => {
     const total = document.getElementById('total');
     const submit = document.getElementById('submit');
+    const submit_invoice = document.getElementById('submit_invoice');
     let total_calculated = 0;
 
     const user_id = window.localStorage.getItem('user_id');
@@ -607,5 +608,18 @@ workshop_pages.load_invoice = async () => {
         total_calculated += Number(response.data[i]['cost']);
     }
     total.innerHTML = total_calculated + " $"
-    })
+
+})
+submit_invoice.addEventListener("click", async function(){
+
+    const get_hospital = workshop_pages.base_url + "select_hospital_patient.php";
+    const response_hospital = await workshop_pages.getAPI(get_hospital+'?id=' + user_id);
+    const hospital_id = response_hospital.data['hospital_id'];
+    let date = new Date();
+    
+    const get_invoive = workshop_pages.base_url + "insert_invoice.php";
+    const response_invoice = await workshop_pages.getAPI(get_invoive+'?user_id=' + user_id+'&hospital_id='+hospital_id+'&total_amount='+total_calculated+'&date_issued='+date);
+    console.log(response_invoice.data)
+})
+    
 }
